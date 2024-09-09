@@ -11,7 +11,7 @@ const Profile = () => {
       {/*  this is for the user info  */}
       <img className="useImg ml-[40%]" src={jub} alt="" />
       <p className="text-title propertyMargin">Dr.Suman Ahmed</p>
-      {/*  this is for the user login info   */}
+      {/* this is for the user login info   */}
       <div className="propertyMargin">
         <div>
           <label className="label">
