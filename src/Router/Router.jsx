@@ -7,6 +7,9 @@ import Deshboard from "../Components/DeshboardPages/Deshboard/Deshboard";
 import Subjects from "../Components/DeshboardPages/Subjects/Subjects";
 import Evaluation from "../Components/DeshboardPages/Evaluation/Evaluation";
 import Profile from "../Components/DeshboardPages/Profile/Profile";
+import Support from "../Components/DeshboardPages/Support/Support";
+import RecommendedSubjects from "../Components/Student/RecommendedSubjects/RecommendedSubjects";
+import MarkReview from "../Components/DeshboardPages/MarkReview/MarkReview";
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +43,18 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "/support",
+        element: <Support></Support>,
+      },
+      {
+        path: "/recommendSubject",
+        element: <RecommendedSubjects></RecommendedSubjects>,
+      },
+      {
+        path: "/afterMath/:id",
+        element: <MarkReview></MarkReview>,
       },
     ],
   },

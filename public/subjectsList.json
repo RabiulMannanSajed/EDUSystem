@@ -1,50 +1,42 @@
 [
   {
     "_id": 1,
-    "subject": "Bangla"
+    "subject": "বাংলা"
   },
   {
     "_id": 2,
-    "subject": "Bangla"
+    "subject": "ইংরেজি"
   },
   {
     "_id": 3,
-    "subject": "Bangla"
+    "subject": "ইতিহাস"
   },
   {
     "_id": 4,
-    "subject": "Bangla"
+    "subject": "গনিত"
   },
   {
     "_id": 5,
-    "subject": "Bangla"
+    "subject": "বিজ্ঞান"
   },
   {
     "_id": 6,
-    "subject": "Bangla"
+    "subject": "ডিজিটাল টেকনোলোজি"
   },
   {
     "_id": 7,
-    "subject": "Bangla"
+    "subject": "স্বাস্থ্য সুরক্ষা"
   },
   {
     "_id": 8,
-    "subject": "Bangla"
+    "subject": "জীবন জীবিকা"
   },
   {
     "_id": 9,
-    "subject": "Bangla"
+    "subject": "শিল্প সংস্কৃতি"
   },
   {
     "_id": 10,
-    "subject": "Bangla"
-  },
-  {
-    "_id": 11,
-    "subject": "Bangla"
-  },
-  {
-    "_id": 12,
-    "subject": "Bangla"
+    "subject": "ইসলাম শিক্ষা"
   }
 ]

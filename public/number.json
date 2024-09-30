@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "studentName": "Jubayed",
+    "studentSubjects": [
+      {
+        "subjectName": "বাংলা",
+        "halfYear": 59,
+        "preTerm": 59,
+        "yearly": 49,
+        "teamWork": 9,
+        "assignment": 9,
+        "attendance": 10
+      },
+      {
+        "subjectName": "ইংরেজি",
+        "halfYear": 59,
+        "preTerm": 59,
+        "yearly": 49,
+        "teamWork": 9,
+        "assignment": 9,
+        "attendance": 10
+      },
+      {
+        "subjectName": "গনিত",
+        "halfYear": 59,
+        "preTerm": 59,
+        "yearly": 49,
+        "teamWork": 9,
+        "assignment": 9,
+        "attendance": 10
+      },
+      {
+        "subjectName": "ইতিহাস",
+        "halfYear": 59,
+        "preTerm": 59,
+        "yearly": 49,
+        "teamWork": 9,
+        "assignment": 9,
+        "attendance": 10
+      },
+      {
+        "subjectName": "বিজ্ঞান",
+        "halfYear": 59,
+        "preTerm": 59,
+        "yearly": 49,
+        "teamWork": 9,
+        "assignment": 9,
+        "attendance": 10
+      },
+      {
+        "subjectName": "ডিজিটাল টেকনোলোজি",
+        "halfYear": 59,
+        "preTerm": 59,
+        "yearly": 49,
+        "teamWork": 9,
+        "assignment": 9,
+        "attendance": 10
+      },
+      {
+        "subjectName": "স্বাস্থ্য সুরক্ষা",
+        "halfYear": 59,
+        "preTerm": 59,
+        "yearly": 49,
+        "teamWork": 9,
+        "assignment": 9,
+        "attendance": 10
+      },
+      {
+        "subjectName": "জীবন জীবিকা",
+        "halfYear": 59,
+        "preTerm": 59,
+        "yearly": 49,
+        "teamWork": 9,
+        "assignment": 9,
+        "attendance": 10
+      },
+      {
+        "subjectName": "শিল্প সংস্কৃতি",
+        "halfYear": 59,
+        "preTerm": 59,
+        "yearly": 49,
+        "teamWork": 9,
+        "assignment": 9,
+        "attendance": 10
+      },
+      {
+        "subjectName": "ইসলাম শিক্ষা",
+        "halfYear": 59,
+        "preTerm": 59,
+        "yearly": 49,
+        "teamWork": 9,
+        "assignment": 9,
+        "attendance": 10
+      }
+    ]
+  }
+]

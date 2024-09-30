@@ -1,13 +1,104 @@
+import { useForm } from "react-hook-form";
 import student from "../../assets/student.jpg";
 import teacher from "../../assets/teacher.jpg";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Signup = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { error },
+  } = useForm();
   const [role, setRole] = useState("student");
 
   const handleRoleChange = (e) => {
     setRole(e.target.value);
+  };
+  // * THis is the part of the send data to the DB and the firebase
+  const { createUser, UpdateUserProfile } = useContext(AuthContext);
+  const onSubmit = (data) => {
+    if (role == "student") {
+      createUser(data.email, data.password).then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+
+        //  this is for update the user Data
+        UpdateUserProfile(data.name, data.email)
+          .then(() => {
+            const studentInfo = {
+              schoolId: data.schoolId,
+              firstName: data.firstName,
+              parentNumber: data.parentNumber,
+              userName: data.userName,
+              password: data.password,
+              studentEmail: data.email,
+              role: role,
+            };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "COntent-Type": "application/json",
+              },
+              body: JSON.stringify(studentInfo),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  reset();
+                  Swal.fire("User Created Successfully");
+                  // navigate("/home");
+                }
+              });
+          })
+          //  this is for catch the error of user
+          .catch((error) => console.log(error));
+      });
+
+      //  this is for catch the error of user
+    } else {
+      createUser(data.email, data.password).then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+
+        //  this is for update the user Data
+        UpdateUserProfile(data.name, data.email)
+          .then(() => {
+            const teacherInfo = {
+              teacherId: data.teacherId,
+              fullName: data.fullName,
+              email: data.email,
+              phoneNumber: data.phoneNumber,
+              userName: data.userName,
+              password: data.password,
+              role: role,
+            };
+            console.log(teacherInfo);
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "COntent-Type": "application/json",
+              },
+              body: JSON.stringify(teacherInfo),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.insertedId) {
+                  reset();
+                  Swal.fire("User Created Successfully");
+                  // navigate("/home");
+                }
+              });
+          })
+          //  this is for catch the error of user
+          .catch((error) => console.log(error));
+        //  this is for catch the error of user
+        // .catch((error) => console.log(error));
+      });
+    }
   };
   return (
     <div>
@@ -18,8 +109,8 @@ const Signup = () => {
               {role === "student" && <img src={student} alt="" />}
               {role === "teacher" && <img src={teacher} alt="" />}
             </div>
-            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-              <form className="card-body">
+            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl p-6">
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <h1 className="text-5xl font-bold text-center">SignUp</h1>{" "}
                 <select name="role" value={role} onChange={handleRoleChange}>
                   <option value="student">Student</option>
@@ -27,16 +118,18 @@ const Signup = () => {
                 </select>{" "}
                 {role === "student" && (
                   <>
-                    {" "}
+                    {/* //* this part is for student */}
                     <div className="form-control">
                       <label className="label">
                         <span className="label-text">School ID</span>
                       </label>
                       <input
-                        type="text"
+                        type="number"
+                        {...register("schoolId")}
+                        required={true}
+                        name="schoolId"
                         placeholder="School ID"
                         className="input input-bordered"
-                        required
                       />
                     </div>{" "}
                     <div className="form-control">
@@ -45,20 +138,24 @@ const Signup = () => {
                       </label>
                       <input
                         type="text"
+                        {...register("firstName")}
+                        required={true}
+                        name="firstName"
                         placeholder="FullName"
                         className="input input-bordered"
-                        required
                       />
                     </div>{" "}
                     <div className="form-control">
                       <label className="label">
-                        <span className="label-text">Parent's Nnmber</span>
+                        <span className="label-text">Parent's Number</span>
                       </label>
                       <input
-                        type="text"
+                        type="number"
+                        {...register("parentNumber")}
+                        required={true}
+                        name="parentNumber"
                         placeholder="Parent's Number"
                         className="input input-bordered"
-                        required
                       />
                     </div>{" "}
                     <div className="form-control">
@@ -67,9 +164,29 @@ const Signup = () => {
                       </label>
                       <input
                         type="text"
+                        {...register("userName")}
+                        required={true}
+                        name="userName"
                         placeholder="UserName"
                         className="input input-bordered"
-                        required
+                      />
+                    </div>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">Email</span>
+                      </label>
+                      <input
+                        {...register("email", {
+                          required: true,
+                          pattern: {
+                            message:
+                              "Entered value does not match email format",
+                          },
+                        })}
+                        name="email"
+                        placeholder="email"
+                        className="input input-bordered"
+                        type="email"
                       />
                     </div>
                     <div className="form-control">
@@ -78,6 +195,10 @@ const Signup = () => {
                       </label>
                       <input
                         type="password"
+                        {...register("password", {
+                          required: true,
+                        })}
+                        name="password"
                         placeholder="Create Password"
                         className="input input-bordered"
                         required
@@ -87,16 +208,18 @@ const Signup = () => {
                 )}
                 {role === "teacher" && (
                   <>
-                    {" "}
+                    {/* this is teacher part */}
                     <div className="form-control">
                       <label className="label">
                         <span className="label-text">ID</span>
                       </label>
                       <input
-                        type="text"
+                        type="number"
+                        {...register("teacherId")}
+                        required={true}
+                        name="teacherId"
                         placeholder="Teacher ID"
                         className="input input-bordered"
-                        required
                       />
                     </div>{" "}
                     <div className="form-control">
@@ -105,9 +228,11 @@ const Signup = () => {
                       </label>
                       <input
                         type="text"
+                        {...register("fullName")}
+                        required={true}
+                        name="fullName"
                         placeholder="FullName"
                         className="input input-bordered"
-                        required
                       />
                     </div>{" "}
                     <div className="form-control">
@@ -115,10 +240,17 @@ const Signup = () => {
                         <span className="label-text">Email</span>
                       </label>
                       <input
-                        type="text"
-                        placeholder="Email"
+                        {...register("email", {
+                          required: true,
+                          pattern: {
+                            message:
+                              "Entered value does not match email format",
+                          },
+                        })}
+                        name="email"
+                        placeholder="email"
                         className="input input-bordered"
-                        required
+                        type="email"
                       />
                     </div>{" "}
                     <div className="form-control">
@@ -126,10 +258,12 @@ const Signup = () => {
                         <span className="label-text">Phone number</span>
                       </label>
                       <input
-                        type="text"
+                        type="number"
+                        {...register("phoneNumber")}
+                        required={true}
+                        name="phoneNumber"
                         placeholder="Phone Number"
                         className="input input-bordered"
-                        required
                       />
                     </div>{" "}
                     <div className="form-control">
@@ -138,20 +272,25 @@ const Signup = () => {
                       </label>
                       <input
                         type="text"
+                        {...register("userName")}
+                        required={true}
+                        name="userName"
                         placeholder="UserName"
                         className="input input-bordered"
-                        required
                       />
                     </div>
                     <div className="form-control">
                       <label className="label">
-                        <span className="label-text">Create Password</span>
+                        <span className="label-text"> Password</span>
                       </label>
                       <input
                         type="password"
-                        placeholder="Create Password"
+                        {...register("password", {
+                          required: true,
+                        })}
+                        name="password"
+                        placeholder="Enter Your Password"
                         className="input input-bordered"
-                        required
                       />
                     </div>
                   </>
