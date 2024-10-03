@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import student from "../../assets/student.jpg";
 import teacher from "../../assets/teacher.jpg";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -13,6 +13,7 @@ const Signup = () => {
     reset,
     formState: { error },
   } = useForm();
+  const navigate = useNavigate();
   const [role, setRole] = useState("student");
 
   const handleRoleChange = (e) => {
@@ -38,7 +39,7 @@ const Signup = () => {
               studentEmail: data.email,
               role: role,
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://edusystemserver-1.onrender.com/users", {
               method: "POST",
               headers: {
                 "COntent-Type": "application/json",
@@ -50,7 +51,7 @@ const Signup = () => {
                 if (data.insertedId) {
                   reset();
                   Swal.fire("User Created Successfully");
-                  // navigate("/home");
+                  navigate("/dashboard");
                 }
               });
           })
@@ -77,7 +78,7 @@ const Signup = () => {
               role: role,
             };
             console.log(teacherInfo);
-            fetch("http://localhost:5000/users", {
+            fetch("https://edusystemserver-1.onrender.com/users", {
               method: "POST",
               headers: {
                 "COntent-Type": "application/json",

@@ -19,17 +19,15 @@ const Main = () => {
     isAfterMathRoute;
 
   const noNavbar =
-    location.pathname.includes("/") ||
-    location.pathname.includes("/login") ||
-    location.pathname.includes("/signUp");
+    location.pathname === "/" ||
+    location.pathname === "/login" ||
+    location.pathname === "/signUp";
   return (
     <div>
       {noNavbar && <TopNavbar />}
       {hideTheSideNav && <DefaultNavbar></DefaultNavbar>}
       {hideTheSideNav && <SideNavbar></SideNavbar>}
-      <div className="bg-[#EFF0F6]">
-        <Outlet></Outlet>
-      </div>
+      <Outlet></Outlet>
     </div>
   );
 };

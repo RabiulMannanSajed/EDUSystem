@@ -1,14 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImg from "../../assets/loginpage.jpg";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLogin = (event) => {
-    event.preventDefault();
+    event.preventDefault(); //
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-
-    console.log("Email:", email);
-    console.log("Password:", password);
+    //  this is for the firebase to auth the user info
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate("/dashboard");
+        Swal.fire("Successfully Login");
+      })
+      .catch((error) => {
+        const errorMessage = error.errorMessage;
+      });
   };
   return (
     <div>
