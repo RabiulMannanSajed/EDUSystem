@@ -3,16 +3,18 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import useUsers from "../../../hook/useUsers";
 
 const Subjects = () => {
+  //  this is from fireBase
   const { user } = useContext(AuthContext);
+  //  this is get the value from the database using the react-query
   const [users, refetch] = useUsers();
   console.log(users);
-  const userinfo = users.find(
-    (userEmail) => userEmail?.studentEmail === user?.email
-  );
+  //  in this we find the user current user email
+  const userinfo = users.find((userEmail) => userEmail?.email === user?.email);
   console.log(user);
   console.log(userinfo);
   //  this is load the his Subject list
   const [subjects, setSubjects] = useState([]);
+  //  we have json data to show all subjects
   useEffect(() => {
     fetch("mysubject.json")
       .then((res) => res.json())

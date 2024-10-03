@@ -36,7 +36,7 @@ const Signup = () => {
               parentNumber: data.parentNumber,
               userName: data.userName,
               password: data.password,
-              studentEmail: data.email,
+              email: data.email,
               role: role,
             };
             fetch("https://edusystemserver-1.onrender.com/users", {
@@ -90,7 +90,7 @@ const Signup = () => {
                 if (data.insertedId) {
                   reset();
                   Swal.fire("User Created Successfully");
-                  // navigate("/home");
+                  navigate("/dashboard");
                 }
               });
           })

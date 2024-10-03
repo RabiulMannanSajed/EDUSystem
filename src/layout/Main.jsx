@@ -9,7 +9,7 @@ const Main = () => {
 
   console.log(location);
   //   this is use to find the location of the user if the user in those page then show sideNav
-  const hideTheSideNav =
+  const showTheSideNav =
     location.pathname.includes("dashboard") ||
     location.pathname.includes("subjects") ||
     location.pathname.includes("/evaluation") ||
@@ -25,8 +25,8 @@ const Main = () => {
   return (
     <div>
       {noNavbar && <TopNavbar />}
-      {hideTheSideNav && <DefaultNavbar></DefaultNavbar>}
-      {hideTheSideNav && <SideNavbar></SideNavbar>}
+      {showTheSideNav && <DefaultNavbar></DefaultNavbar>}
+      {showTheSideNav && <SideNavbar></SideNavbar>}
       <Outlet></Outlet>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useUsers from "../../../hook/useUsers";
 import { NavLink } from "react-router-dom";
@@ -6,9 +6,7 @@ import { NavLink } from "react-router-dom";
 const StudentMarks = () => {
   const { user } = useContext(AuthContext);
   const [users] = useUsers();
-  const userinfo = users.find(
-    (userEmail) => userEmail?.studentEmail === user?.email
-  );
+  const userinfo = users.find((userEmail) => userEmail?.email === user?.email);
   //  TODO : find the use base on id and the show his subjects
   const [studentNumbers, setStudentNumbers] = useState([]);
   useEffect(() => {

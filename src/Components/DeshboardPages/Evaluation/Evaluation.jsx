@@ -14,12 +14,12 @@ const Evaluation = () => {
       {/* //TODO here testing after all thing teacher will up student down  */}
       {userEmail?.role == "teacher" ? (
         <>
-          {/*  this is student part  */} <StudentMarks></StudentMarks>
+          {/*  this is teacher part */}
+          <TeacherEvaluation></TeacherEvaluation>
         </>
       ) : (
         <>
-          {/*  this is teacher part */}
-          <TeacherEvaluation></TeacherEvaluation>
+          {/*  this is student part  */} <StudentMarks></StudentMarks>
         </>
       )}
     </div>
