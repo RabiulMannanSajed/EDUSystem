@@ -31,10 +31,8 @@ const Signup = () => {
         UpdateUserProfile(data.name, data.email)
           .then(() => {
             const studentInfo = {
-              schoolId: data.schoolId,
               firstName: data.firstName,
               parentNumber: data.parentNumber,
-              userName: data.userName,
               password: data.password,
               email: data.email,
               role: role,
@@ -69,11 +67,9 @@ const Signup = () => {
         UpdateUserProfile(data.name, data.email)
           .then(() => {
             const teacherInfo = {
-              teacherId: data.teacherId,
               fullName: data.fullName,
               email: data.email,
               phoneNumber: data.phoneNumber,
-              userName: data.userName,
               password: data.password,
               role: role,
             };
@@ -107,8 +103,12 @@ const Signup = () => {
         <div className="hero bg-base-200 h-auto">
           <div className="hero-content flex-col lg:flex-row">
             <div className="text-center lg:text-left">
-              {role === "student" && <img src={student} alt="" />}
-              {role === "teacher" && <img src={teacher} alt="" />}
+              {role === "student" && (
+                <img src={student} className="mr-10" alt="" />
+              )}
+              {role === "teacher" && (
+                <img src={teacher} className="mr-10" alt="" />
+              )}
             </div>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl p-6">
               <form onSubmit={handleSubmit(onSubmit)}>
@@ -120,19 +120,6 @@ const Signup = () => {
                 {role === "student" && (
                   <>
                     {/* //* this part is for student */}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">School ID</span>
-                      </label>
-                      <input
-                        type="number"
-                        {...register("schoolId")}
-                        required={true}
-                        name="schoolId"
-                        placeholder="School ID"
-                        className="input input-bordered"
-                      />
-                    </div>{" "}
                     <div className="form-control">
                       <label className="label">
                         <span className="label-text">FullName</span>
@@ -159,19 +146,6 @@ const Signup = () => {
                         className="input input-bordered"
                       />
                     </div>{" "}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">UserName</span>
-                      </label>
-                      <input
-                        type="text"
-                        {...register("userName")}
-                        required={true}
-                        name="userName"
-                        placeholder="UserName"
-                        className="input input-bordered"
-                      />
-                    </div>
                     <div className="form-control">
                       <label className="label">
                         <span className="label-text">Email</span>
@@ -209,20 +183,6 @@ const Signup = () => {
                 )}
                 {role === "teacher" && (
                   <>
-                    {/* this is teacher part */}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">ID</span>
-                      </label>
-                      <input
-                        type="number"
-                        {...register("teacherId")}
-                        required={true}
-                        name="teacherId"
-                        placeholder="Teacher ID"
-                        className="input input-bordered"
-                      />
-                    </div>{" "}
                     <div className="form-control">
                       <label className="label">
                         <span className="label-text">FullName</span>
@@ -267,19 +227,6 @@ const Signup = () => {
                         className="input input-bordered"
                       />
                     </div>{" "}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">UserName</span>
-                      </label>
-                      <input
-                        type="text"
-                        {...register("userName")}
-                        required={true}
-                        name="userName"
-                        placeholder="UserName"
-                        className="input input-bordered"
-                      />
-                    </div>
                     <div className="form-control">
                       <label className="label">
                         <span className="label-text"> Password</span>
