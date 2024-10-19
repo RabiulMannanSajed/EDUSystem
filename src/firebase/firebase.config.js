@@ -5,13 +5,13 @@ import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDCN30cD2WJ03n9-ZWNLWCjO1En9Uq1DRQ",
-  authDomain: "edusystem-ee06f.firebaseapp.com",
-  projectId: "edusystem-ee06f",
-  storageBucket: "edusystem-ee06f.appspot.com",
-  messagingSenderId: "900784887982",
-  appId: "1:900784887982:web:a74c7e951740576646f53f",
-  measurementId: "G-NHXJG1VGGT",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
+  measurementId: import.meta.env.VITE_measurementId,
 };
 
 // Initialize Firebase
