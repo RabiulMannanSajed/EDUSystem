@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 const TopNavbar = () => {
   return (
@@ -6,7 +6,9 @@ const TopNavbar = () => {
       <div className="ml-[5%] mr-[5%]">
         <div className="flex items-center justify-between">
           <div>
-            <img src={logo} alt="" />
+            <NavLink to="/">
+              <img src={logo} alt="" />
+            </NavLink>
           </div>
           <p>
             <Link to="/dashboard">deshbord</Link>

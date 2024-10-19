@@ -40,7 +40,7 @@ const Signup = () => {
             fetch("https://edusystemserver-1.onrender.com/users", {
               method: "POST",
               headers: {
-                "COntent-Type": "application/json",
+                "Content-Type": "application/json",
               },
               body: JSON.stringify(studentInfo),
             })
@@ -77,7 +77,7 @@ const Signup = () => {
             fetch("https://edusystemserver-1.onrender.com/users", {
               method: "POST",
               headers: {
-                "COntent-Type": "application/json",
+                "Content-Type": "application/json",
               },
               body: JSON.stringify(teacherInfo),
             })

@@ -2,6 +2,7 @@ import { Outlet, useLocation, useMatch } from "react-router-dom";
 import TopNavbar from "../Shared/TopNavbar/TopNavbar";
 import SideNavbar from "../Shared/SideNavbar/SideNavbar";
 import DefaultNavbar from "../Shared/DefaultNavbar/DefaultNavbar";
+import Footer from "../Shared/Footer/Footer";
 
 const Main = () => {
   const location = useLocation();
@@ -28,6 +29,7 @@ const Main = () => {
       {showTheSideNav && <DefaultNavbar></DefaultNavbar>}
       {showTheSideNav && <SideNavbar></SideNavbar>}
       <Outlet></Outlet>
+      {/* <Footer></Footer> */}
     </div>
   );
 };

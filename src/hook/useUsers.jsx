@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 const useUsers = () => {
   const {
     isPending,
+    //  to call another Api change the user name
     data: users = [],
     refetch,
   } = useQuery({
